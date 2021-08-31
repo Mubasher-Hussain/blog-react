@@ -39,27 +39,28 @@ export function BlogDetails({match}) {
   function displayDetail(){
     if (blogDetails && blogDetails.post){
       return (
-        <li>
-          <p>AuthorId: <NavLink to={'../blogsList/' + blogDetails.post.author} >{blogDetails.post.author}</NavLink></p>
+        <div>
+          <p>Author: <NavLink to={'../blogsList/' + blogDetails.post.author} >{blogDetails.post.author}</NavLink></p>
           <p>Title: {blogDetails.post.title}</p>
           <p>Content: { blogDetails.post.content }</p>
           <p>Modified At: { blogDetails.post.updated_at }</p>
           <p>Created At: { blogDetails.post.created_at }</p>
           {blogDetails.isAuth && (
             <p>
-              <NavLink to={{pathname: `../editPost/${pk}`,
-                            query: {title: blogDetails.post.title,
-                                    content: blogDetails.post.content,
-                                    }
-                            }}>
+              <button className='btn' onClick={() => 
+                history.push({pathname: `../editPost/${pk}`,
+                              query: {title: blogDetails.post.title,
+                                      content: blogDetails.post.content,}
+                             })
+                             }>
                 Edit
-              </NavLink>
+              </button>
               <button type="button" className="btn" onClick={deletePost}>
               Delete
               </button>
             </p>
           )}            
-        </li>
+        </div>
       )
     }
   }
@@ -82,11 +83,11 @@ export function BlogDetails({match}) {
   }
   
   return (
-    <div class="container mt-5 mb-5">
+    <div class="container mt-5 mb-5 blogList ">
       <h1>Blog Post Detail</h1>
-      <ul>
+      <div class='container'>
         { displayDetail()}
-      </ul>
+      </div>
       <div class="row height d-flex justify-content-center align-items-center">
         <div class="col-md-7">
           <div class="card">
@@ -111,7 +112,7 @@ export function BlogDetails({match}) {
 function Comment(params){
   
   return(
-    <div class="mt-2">
+    <div style={{border:'1px solid black', marginBottom:'5px'}}>
       <div class="d-flex flex-row p-3">
         <div class="w-100">
           <div class="d-flex justify-content-between align-items-center">

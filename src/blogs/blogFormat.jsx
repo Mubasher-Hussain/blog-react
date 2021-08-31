@@ -33,25 +33,27 @@ export class BlogFormat extends React.Component{
   
   render(){
     return (
-      <div className="form">
-        <p>
-          <label htmlFor="title">Title</label>
+      <div className="container">
+        <div class="form-group">
+          <label style= {{float: 'left'}} htmlFor="title">Title</label>
           <input type="text"
+            class="form-control"
             name="title"
             placeholder="Title"
             value={this.state.blogData.title}
             onChange={this.handleInputChange.bind(this)}
           />
-        </p>
-        <p>
-          <label htmlFor="content">Content</label>
-          <input type="text"
+        </div>
+        <div class="form-group">
+          <label style= {{float: 'left'}} htmlFor="content">Content</label>
+          <textarea
+            class="form-control"
             name="content"
             placeholder="content"
             value={this.state.blogData.content}
             onChange={this.handleInputChange.bind(this)}
            />
-        </p>
+        </div>
         <button type="button" className="btn" onClick={() => this.props.handleClick(this.state.blogData)}>
         Submit
         </button>

@@ -15,12 +15,12 @@ export function BlogsList({match}) {
       
     if (blogsList && blogsList.length){
       return blogsList.map((blog)=>{
-        return <li>
+        return <div style={{border:'1px solid black', marginBottom:'5px'}}>
           <p>Author: <NavLink to={'../blogsList/' + blog.author} >{blog.author}</NavLink></p>
           <p>Title: <NavLink to={'../blogDetails/' + blog.id} >{blog.title}</NavLink></p>
           <p>Modified At: { blog.updated_at }</p>
           <p>Created At: { blog.created_at }</p>            
-        </li>
+        </div>
     })}
   }
   
@@ -37,12 +37,12 @@ export function BlogsList({match}) {
   }, [author])
   
   return (
-    <div class="container py-5">
+    <div class='blogList'>
       <h1>{author} Blog Post List</h1>
-        <ul>
+        <div >
           { displayList()}
-        </ul>
-        <NavLink to='../createPost'>Create New Blog</NavLink>
+        </div>
+        
     </div>
   )
 }

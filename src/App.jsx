@@ -1,7 +1,6 @@
 import React from "react";
 import {
   HashRouter as Router,
-  NavLink,
   Redirect,
   Route,
   Switch,
@@ -45,6 +44,7 @@ class App extends React.Component {
     return (
       <Router basename='/static'>
         <div className="App">
+          <NavBar />
           <Switch>
             <Route exact path='/'><Redirect to='../blogsList'></Redirect></Route>
             <Route exact path="/blogsList/:author?" component={BlogsList}/>
@@ -75,7 +75,7 @@ class App extends React.Component {
           </Switch>
           
       </div>
-      <NavBar />
+      
     </Router>
     );
   }
@@ -109,8 +109,8 @@ function NavBar () {
     .then(() =>{logout(); history.go(0);}); 
   }
   return (
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="collapse navbar-collapse" id="navbarText">
+    <nav class='navbar navbar-expand navbar-dark bg-dark fixed-top'>
+      <div class='container'>
         <ul class="navbar-nav mr-auto">
 
           { logged &&      
@@ -120,12 +120,13 @@ function NavBar () {
             }
           {!logged && 
             <li class="nav-item">
-              <NavLink class="nav-link" to={'../login'}>Login</NavLink>
+              <button  onClick={() => history.push('../login')}>Login</button>
             </li>
             }
           <li class="nav-item">
-            <NavLink class="nav-link" to={'../blogsList'}>Posts List</NavLink>
+          <button  onClick={() => history.push('../blogsList')}>Posts List</button>
           </li>
+          <button onClick={() => history.push('../createPost')}>Create New Blog</button>
         </ul>
       </div>
     </nav>
